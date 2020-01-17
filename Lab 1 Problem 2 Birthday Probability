@@ -1,0 +1,20 @@
+Instructions:
+Consider n people who are attending a class and n is smaller than 200. 
+We assume that every person has an equal probability of being born on any day during the year, 
+independently of everyone else, and ignore the additional complication presented by leap years 
+(i.e., nobody is born on February 29, we have 365 days for one year). 
+What is P(n), the probability that for all n people each person has a distinct birthday? 
+Please calculate and simulate the P(n) and plot the P(n) against n to visualize the trend.
+
+#computer simulation
+%matplotlib inline
+plt.style.use('seaborn-whitegrid')
+p=[]
+for n in range(1,200):
+    b=0
+    for i in range(10000):         
+        a=np.random.randint(1,366,n)
+        if len(np.unique(a))==n:
+            b=b+1
+    p.append(b/10000)
+plt.plot(p);
