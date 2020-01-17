@@ -1,1 +1,5 @@
-
+Instructions:
+Simulate the Buffon’s Needle experiments. 
+Please calculate, simulate and store the estimated number of π using 100, 1000, 10000, 100000 trials,
+and plot the estimated numbers versus trial numbers to visualize the convergence 
+(better use logarithmic coordinate for the number of trials).
