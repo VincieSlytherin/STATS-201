@@ -3,3 +3,33 @@ Simulate the Buffon’s Needle experiments.
 Please calculate, simulate and store the estimated number of π using 100, 1000, 10000, 100000 trials,
 and plot the estimated numbers versus trial numbers to visualize the convergence 
 (better use logarithmic coordinate for the number of trials).
+
+
+%matplotlib inline
+import math
+import matplotlib.pyplot as plt
+plt.style.use('seaborn-whitegrid')
+import numpy as np
+fig = plt.figure()
+ax = plt.axes()
+a=[100,1000,10000,100000]
+ex=[np.pi,np.pi,np.pi,np.pi]
+p=[]
+pi=3
+for i in a:
+    
+    angle=np.random.rand(i)*pi/2
+    l=np.random.rand(i)/2
+    y=np.sum((l/np.sin(angle))<(1/2))/i
+    pi=2/y
+    p.append(pi)
+print(p)
+b=[]
+for i in a:
+    i=math.log(i,10)
+    b.append(i)
+ax.plot(b,p,label='the estimated number of  π ')
+ax.plot(b,ex,label='value of π')
+plt.xlabel('n')
+plt.ylabel('pi')
+plt.legend();
