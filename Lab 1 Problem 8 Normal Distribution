@@ -1,0 +1,29 @@
+# Instruction
+Calculate the following probabilities and use computer simulation to verify the results: 
+if 𝑋~Ν(𝜇, 𝜎2), find 𝑃(𝑋 > 𝜇 + 𝑎𝜎) for 𝑎 = 1,2,3, where 𝜎 is the standard deviation.
+Note that you may select arbitrary values of 𝜇 and 𝜎 in your simulation.
+
+# mathematically calculation
+a1=1-0.8413
+a2=1-0.9712
+a3=1-0.9987
+print('when a=1, the probability is '+ str(a1))
+print('when a=2, the probability is '+ str(a2))
+print('when a=3, the probability is '+ str(a3))
+
+# computer simulation
+mu, sigma = 0, 0.1 # mean and standard deviation
+s = np.random.normal(mu, sigma, 1000)
+count, bins, ignored = plt.hist(s, 30, density=True)
+plt.plot(bins, 1/(sigma * np.sqrt(2 * np.pi)) *
+               np.exp( - (bins - mu)**2 / (2 * sigma**2) ),
+         linewidth=2, color='r')
+plt.show()
+
+a=[1,2,3]
+for j in a:
+    count=0
+    for i in s:
+        if i>(mu+j*sigma):
+            count=count+1
+    print('when a = '+str(j), 'the probability is '+ str(count/1000))
