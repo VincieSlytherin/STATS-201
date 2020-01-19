@@ -1,0 +1,15 @@
+# Instruction
+If 𝑋 is a geometric random variable with 𝑝 = 0.25, what is the probability that 𝑋 ≥ 4? 
+Verify your result by performing a computer simulation.
+
+
+# mathematically calculation
+p=0.25
+F4=1-(1-p)**3
+P=1-F4
+P
+
+
+# computer simulation
+z = np.random.geometric(p=0.25, size=10000000)
+(z >= 4).sum() /10000000
