@@ -1,0 +1,39 @@
+# Instruction
+A coin is tossed three times. What is the probability that exactly two heads occur, given that:
+a) the first outcome was a head?
+b) the first two outcomes were heads?
+
+
+# mathematically calculation
+a=0 #first outcome was a head
+b=0 #the first two outcomes was a head
+c=0 #first outcome was a head, and exactly two heads occur
+d=0 #the first two outcomes was a head, and exactly two heads occur
+for i in range(2):
+    for j in range(2):
+        for k in range (2):
+            if i==0:
+                a+=1
+                if j==0:
+                    b+=1
+                    if k==1:
+                        d+=1
+                if j==1:
+                    if k==0:
+                        c=d+1
+print('(a)',c/a)
+print('(b)',d/b)
+
+
+# computer simulation 
+n=1000000
+z=np.random.randint(0,2,n).reshape(n//2,2)
+a,b=0,0
+for i in z:
+    if list(i).count(1)==1:
+        a=a+1
+    
+print('(a)',a/(n//2))
+x=np.random.randint(0,2,n)
+b=np.mean(x==1)
+print('(b)',b)
