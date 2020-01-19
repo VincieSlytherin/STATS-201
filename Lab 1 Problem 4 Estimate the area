@@ -1,0 +1,21 @@
+# Instruction
+Please use simulation to estimate the area under the graph of y = 1/(x + 1) in the unit square (x in [0,1], y in [0,1]) 
+in the same way as in Fig 2.3 of the Grinstead book. 
+Calculate the true value of this area and use your simulation results to estimate the value of log2. 
+How accurate is your estimation?
+the area under the graph =ln2=0.6931471805599453
+
+# mathematically calculation
+import numpy as np
+x=np.linspace(0,1,100000)
+y=1/(x+1)
+np.sum(y/100000)
+
+
+# computer simulation
+import numpy as np
+x=np.random.rand(100000)
+y=np.random.rand(100000)
+a=np.mean(y<1/(x+1))
+b=math.log(2)
+print('error:'+ str((b-a)/b))
