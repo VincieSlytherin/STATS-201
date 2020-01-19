@@ -1,0 +1,26 @@
+# Instructions
+Draw the top 7 cards from a well-shuffled standard 52-card deck 
+(note in a standard deck of 52 cards, there is a total of 4 Kings 
+see http://en.wikipedia.org/wiki/Standard_52-card_deck).
+Find the probability that the 7 cards include exactly 3 Kings. 
+Please solve it mathematically and use computer simulation to prove your solution.
+
+# mathematically calculation
+import numpy as np
+from math import factorial
+def f(a,b):
+    return factorial(b)/factorial(b-a)/factorial(a)
+p=f(3,4)*f(4,48)/f(7,52)
+p
+
+# comptuer simulation
+import numpy as np
+n_trials=100000
+n=0
+for a in range(n_trials):
+    cards = np.arange(1,53)%13    
+    np.random.shuffle(cards)
+    b=cards[:7]
+    if list(b).count(0)==3:
+        n=n+1
+print(n/n_trials)
