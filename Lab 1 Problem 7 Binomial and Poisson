@@ -1,0 +1,47 @@
+# Instruction:
+Use binomial random variable to approximate a Poisson random variable, plot the Probability mass function (PMF):
+a) Compare the PMFs for Poisson(1) and Binomial(100,0.01) random variables.
+• Poisson(1) refers to a Poisson distribution with 𝜆 = 1.
+• Binomial(100,0.01) refers to a Binomial distribution with 𝑛 = 100, 𝑝 = 0.01.
+b) Generate realizations of a Poisson random variable by using a binomial approximation.
+
+
+# Poisson Distribution
+s = np.random.poisson(1, 10000)
+unique1, counts1 = np.unique(s, return_counts=True)
+count, bins, ignored = plt.hist(s, 14)
+plt.title('Poisson Distribution')
+plt.show()
+
+# Binomial Distribution
+n, p = 100, .01 # number of trials, probability of each trial
+s1 = np.random.binomial(n, p, 10000)
+unique2, counts2 = np.unique(s1, return_counts=True)
+count, bins, ignored = plt.hist(s1, 14)
+plt.title('Binomial Distribution')
+plt.show()
+
+# Compare them
+ax = plt.axes()
+ax.plot(unique1, counts1,label='Poisson Distribution')
+ax.plot(unique2, counts2, label='Binomial Distribution')
+plt.legend(loc='upper right')
+
+# Generate
+n, p = 500, .01 # number of trials, probability of each trial
+s1 = np.random.binomial(n, p, 10000)
+unique2, counts2 = np.unique(s1, return_counts=True)
+count, bins, ignored = plt.hist(s1, 14)
+plt.title('Binomial Distribution')
+plt.show()
+mu=n*p
+s = np.random.poisson(mu, 10000)
+unique1, counts1 = np.unique(s, return_counts=True)
+count, bins, ignored = plt.hist(s, 14)
+plt.title('Poisson Distribution')
+plt.show()    
+ax = plt.axes()
+ax.plot(unique1, counts1,label='Poisson Distribution')
+ax.plot(unique2, counts2, label='Binomial Distribution')
+plt.legend(loc='upper right')
+
